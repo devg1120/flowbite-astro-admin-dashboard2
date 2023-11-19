@@ -9,7 +9,7 @@ import { url } from "../lib/data.js";
 
 <aside
   id="sidebar"
-  class="fixed top-0 left-0 z-20 flex flex-col flex-shrink-0 hidden h-full pt-16 font-normal duration-75 lg:flex transition-width"
+  class="fixed top-0 left-0 z-20 flex flex-col flex-shrink-0 hidden h-full pt-11 font-normal duration-75 lg:flex transition-width"
   aria-label="Sidebar"
 >
   <div
@@ -725,8 +725,55 @@ import { url } from "../lib/data.js";
 </div>
 
 <script>
+
+  function set_animate1(element) {
+            const openDetails = element.animate(
+              {
+                opacity: [0, 1],
+                width: [0, sidebar.offsetWidth + 'px'],
+              },
+              {
+                duration: 560,
+                easing: 'ease-out',
+	        //iterations: Infinity,
+		direction: 'alternate'
+              }
+            );
+  }
+
+  function set_animate2(element) {
+            const openDetails = element.animate(
+              {
+                opacity: [0, 1],
+                width: [0, sidebar.offsetWidth + 'px'],
+              },
+              {
+                duration: 560,
+                easing: 'ease-out',
+	        //iterations: Infinity,
+		direction: 'alternate'
+              }
+            );
+  }
+
   const sidebar = document.getElementById("sidebar");
   const main_content = document.getElementById("main-content");
+/*
+            const openDetails = sidebar.animate(
+              {
+                opacity: [0, 1],
+                //height: [0, sidebar.offsetWidth + 'px'],
+                width: [0, sidebar.offsetWidth + 'px'],
+              },
+              {
+                duration: 560,
+                easing: 'ease-out',
+	        //iterations: Infinity,
+		//direction: 'alternate'
+
+              }
+            );
+*/
 
   if (sidebar) {
     const toggleSidebarMobile = (
@@ -764,11 +811,14 @@ import { url } from "../lib/data.js";
           main_content.classList.remove("lg:ml-56")
           main_content.classList.add("lg:ml-20")
 	  console.log("large-small",main_content);
+          set_animate2(sidebar);
       } else {
           main_content.classList.remove("lg:ml-20")
           main_content.classList.add("lg:ml-56")
 	  console.log("small-large",main_content);
+          set_animate1(sidebar);
       }
+
 
     };
 
